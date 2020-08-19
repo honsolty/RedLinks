@@ -2,14 +2,14 @@ import time
 import json
 import redis
 from aiohttp import web
-from views import post_link, get_link
+from .views import post_link, get_link
 from test import test_json
-# from custom_errors import LinkError
+from .custom_errors import LinkError
 
 
-def post(request=test_json['post']):
+def post(reques):
     try:
-        post_link(request)
+        post_link(reques)
         response = {'status': 'ok'}
     except LinkError as error:
         response = {'status': 'failed', 'reason': "wrong address fromat", "error" : error}
@@ -19,7 +19,7 @@ def post(request=test_json['post']):
         return web.Response(text=json.dumps(response))
 
 
-def get(request=test_json['get']):
+def get(request):
     try:
         response = get_link(request)
     except ValueError as error:

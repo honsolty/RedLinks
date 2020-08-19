@@ -1,15 +1,15 @@
 import time
 import redis
-# from custom_errors import LinkError
+from .custom_errors import LinkError
 
 
 def add_link_to_db(links):
     for link in links.replace(' ', '').split(','):
         if link.count('.') != 1:
-            print('oh')
-            # raise LinkError(link)
+            raise LinkError(link)
         print("Address:", link, "Time:", str(int(time.time() * 1000)))
         redis.Redis().zadd("links", {link: str(int(time.time() * 1000))})
+        print('ok')
 
 
 def get_link_from_db(f, t):

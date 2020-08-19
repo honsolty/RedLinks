@@ -1,4 +1,4 @@
-from logic import post, get, web
+from .logic import post, get, web
 
 
 def init():
