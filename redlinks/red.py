@@ -12,7 +12,7 @@ def add_link_to_db(links):
                 link = link.replace(protocol, "")
         print("Address:", link, "Time:", str(int(time.time() * 1000)))
         redis.Redis().zadd("links", {link: str(int(time.time() * 1000))})
-        print('ok')
+        print('')
 
 
 def get_link_from_db(f, t):

@@ -7,9 +7,9 @@ from test import test_json
 from .custom_errors import LinkError
 
 
-def post(reques):
+def post(request):
     try:
-        post_link(reques)
+        post_link(request)
         response = {'status': 'ok'}
     except LinkError as error:
         response = {'status': 'failed', 'reason': "wrong address fromat", "error" : error}
