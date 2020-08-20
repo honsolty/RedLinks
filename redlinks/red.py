@@ -7,6 +7,9 @@ def add_link_to_db(links):
     for link in links.replace(' ', '').split(','):
         if link.count('.') != 1:
             raise LinkError(link)
+        for protocol in ['http://', "ftp://", "https://", "tcp://"]:
+            if protocol in link:
+                link = link.replace(protocol, "")
         print("Address:", link, "Time:", str(int(time.time() * 1000)))
         redis.Redis().zadd("links", {link: str(int(time.time() * 1000))})
         print('ok')
