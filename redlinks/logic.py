@@ -16,6 +16,7 @@ def post(request):
     except KeyError as error:
         response = {'status': 'failed', 'reason': "parametr 'address' required", "error" : error}
     finally:
+        print(json.dumps(response))
         return web.Response(text=json.dumps(response))
 
 
@@ -27,5 +28,6 @@ def get(request):
     except KeyError as error:
         response = {'status': 'failed', 'reason': "parameters 'from' or 'to' are missing", "error" : error}
     finally:
+        print(json.dumps(response))
         return web.Response(text=json.dumps(response))
     

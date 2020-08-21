@@ -10,9 +10,11 @@ def add_link_to_db(links):
         for protocol in ['http://', "ftp://", "https://", "tcp://"]:
             if protocol in link:
                 link = link.replace(protocol, "")
+                link = link[:link.index('/')]
         print("Address:", link, "Time:", str(int(time.time() * 1000)))
+        print("ok1")
         redis.Redis().zadd("links", {link: str(int(time.time() * 1000))})
-        print('')
+        print('ok2')
 
 
 def get_link_from_db(f, t):

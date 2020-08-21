@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
  
 setup(name='redlinks',
  
-      version='0.0.4',
+      version='0.0.5',
 
       url='https://github.com/honsolty/RedLinks',
  
